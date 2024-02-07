@@ -11,5 +11,5 @@ public interface ILibrary {
     Favorite[] findByRating(int rating);
     Favorite deleteFavorite(String name);
     Favorite deleteFavoriteById(int id);
-    Favorite updateFavorite(String name);
+    Favorite updateFavorite(String name,Favorite favToUpd);
 }
