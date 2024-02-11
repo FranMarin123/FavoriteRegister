@@ -10,14 +10,26 @@ public class UI {
     }
 
     public static int readInt(String msg) {
-        int numEleccion = 0;
+        Scanner keyboard = new Scanner(System.in);
+        int num = 0;
+        boolean comp = false;
+
+        do {
+            System.out.print(msg);
+            try {
+                num = keyboard.nextInt();
+                comp = true;
+            } catch (Exception e) {
+                System.out.println("Error: this number isn´t good.");
+                keyboard.nextLine();
+            }
+        } while (!comp);
+        return num;
+    }
+
+    public static String readString(String msg) {
         Scanner teclado = new Scanner(System.in);
-        try {
-            numEleccion = teclado.nextInt();
-        } catch (Exception e) {
-            teclado.nextLine();
-            System.out.println("You have to select an option gave you before");
-        }
-        return numEleccion;
+        System.out.print(msg);
+        return teclado.nextLine();
     }
 }
