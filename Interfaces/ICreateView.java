@@ -1,15 +1,18 @@
 package Interfaces;
 
+import Model.Favorite;
+import Model.Game;
+import Model.Movie;
+import Model.Song;
+
 public interface ICreateView {
-    String introduceName();
-    int introduceRating();
-    String introduceComment();
-    int introduceYear();
+    void creationInformation();
     int whatAreYouCreating();
-    int introduceMovieDuration();
+    Movie createMovie();
+    Song createSong();
+    Game createVideogame();
     int introduceThemeMovie();
     String otherThemeMovie();
-    int introduceSongDuration();
     int introduceGenreSong();
     String otherGenreSong();
     int introduceTypeGame();
