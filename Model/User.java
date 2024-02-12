@@ -80,9 +80,10 @@ public class User {
 
     @Override
     public String toString() {
+        String hiddenPassword = password.replaceAll(".", "*");
         return "User{" +
                 "username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                ", password='" + hiddenPassword + '\'' +
                 '}';
     }
 }
