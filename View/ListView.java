@@ -1,6 +1,10 @@
 package View;
 
 import Interfaces.IListView;
+import Model.Favorite;
+import Model.Game;
+import Model.Movie;
+import Model.Song;
 import Utils.UI;
 
 public class ListView implements IListView {
@@ -8,17 +12,34 @@ public class ListView implements IListView {
     @Override
     public int howManyFavs() {
         System.out.println("How many favs do you want to list?");
-        System.out.println("1. 5.");
-        System.out.println("2. 10.");
-        System.out.println("3. 15.");
-        System.out.println("4. 20.");
-        System.out.println("5. 25.");
-        System.out.println("6. Go back.");
-        return UI.readInt("Select an option: ");
+        System.out.println("If you want to go back, please press 0");
+        return UI.readInt("Write the ammount: ");
     }
 
     @Override
     public void showXFavs() {
 
+    }
+
+    @Override
+    public void showFavs(Favorite favorite) {
+        switch(favorite.getClass().getSimpleName()) {
+            case "Movie":
+                Movie movieToShow = (Movie) favorite;
+                System.out.println(movieToShow.toString());
+                break;
+            case "Song":
+                Song songToShow = (Song) favorite;
+                System.out.println(songToShow.toString());
+                break;
+            case "Game":
+                Game gameToShow = (Game) favorite;
+                System.out.println(gameToShow.toString());
+                break;
+            default:
+                // Manejo para otros tipos de objetos
+                System.out.println("Tipo de objeto no soportado: " + favorite.getClass().getSimpleName());
+                break;
+        }
     }
 }
