@@ -35,7 +35,19 @@ public class CreateView implements ICreateView {
                 UI.readInt("Introduce the year: "),
                 UI.readString("Introduce one comment: "),
                 UI.readInt("Introduce the duration: "),
-                UI.readString("Introduce the theme: ")
+                UI.readString("Introduce the theme: \n" +
+                        "1. Action\n" +
+                        "2. Adventure\n" +
+                        "3. Animation\n" +
+                        "4. Comedy\n" +
+                        "5. Sci-Fi\n" +
+                        "6. Drama\n" +
+                        "7. Fantasy\n" +
+                        "8. Terror\n" +
+                        "9. Mystery\n" +
+                        "10. Romantic\n" +
+                        "11. Other\n" +
+                        "Write the option: ")
                 );
 
         return favCreated;
