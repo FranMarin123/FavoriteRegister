@@ -1,5 +1,7 @@
 package Model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class User {
@@ -24,7 +26,43 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        try {
+
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            byte[] hashedBytes = digest.digest(password.getBytes());
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            String hashedPassword = stringBuilder.toString();
+
+            this.password = hashedPassword;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean comparePassword(String inputPassword) {
+        boolean comp;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            byte[] hashedBytes = digest.digest(inputPassword.getBytes());
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            String hashedInputPassword = stringBuilder.toString();
+
+            comp= hashedInputPassword.equals(password);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            comp= false;
+        }
+        return comp;
     }
 
     @Override
