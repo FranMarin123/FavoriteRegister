@@ -17,8 +17,10 @@ public class ListView implements IListView {
     }
 
     @Override
-    public void showXFavs() {
-
+    public void showXFavs(Favorite[] favsToShow) {
+        for (int i=0;i<favsToShow.length;i++){
+            showFavs(favsToShow[i]);
+        }
     }
 
     @Override

@@ -2,6 +2,6 @@ package Interfaces;
 
 public interface IUpdateView {
     int updateMenu();
-    void updateFavorite();
+    String updateFavorite();
     boolean sureToUpdate();
 }

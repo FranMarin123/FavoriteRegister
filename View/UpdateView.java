@@ -14,7 +14,8 @@ public class UpdateView implements IUpdateView {
     }
 
     @Override
-    public void updateFavorite() {
+    public String updateFavorite() {
+        return UI.readString("Introduce the name for the favourite you want to update: ");
     }
     @Override
     public boolean sureToUpdate() {

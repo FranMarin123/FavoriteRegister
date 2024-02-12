@@ -19,13 +19,20 @@ public class Favorite {
         this.comment = comment;
     }
 
+    public Favorite() {
+        this.id=-1;
+        this.name = "name";
+        this.score = -1;
+        this.year = -1;
+        this.comment = "";
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId() {
         this.id = (int) (Math.random() * (MAXID - MINID)) + MINID;
-
     }
 
     public String getName() {
@@ -81,6 +88,6 @@ public class Favorite {
                 ", score=" + score +
                 ", year=" + year +
                 ", comment='" + comment + '\'' +
-                '}';
+                '}'+ "\n";
     }
 }

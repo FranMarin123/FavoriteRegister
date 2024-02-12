@@ -171,4 +171,13 @@ public class CreateView implements ICreateView {
         UI.readString("Introduce the platform: ");
         return null;
     }
+
+    public Favorite createFavorite(){
+        Favorite favCreated=new Favorite(UI.readString("Introduce the new name: "),
+                UI.readInt("Introduce the new rating: "),
+                UI.readInt("Introduce the new year: "),
+                UI.readString("Introduce one new comment: ")
+        );
+        return favCreated;
+    }
 }

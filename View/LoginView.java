@@ -19,8 +19,12 @@ public class LoginView implements ILoginView {
         System.out.println("It`s correct.");
     }
 
+    public void loginWrong() {
+        System.out.println("Error, wrong credentials");
+    }
+
     @Override
     public void loginError() {
-        System.out.println("The username or the password are wrong");
+        System.out.println("The username is not registered, new user created");
     }
 }
