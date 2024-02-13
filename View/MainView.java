@@ -24,4 +24,8 @@ public class MainView implements IMainView {
     public void goodByeProgram() {
         System.out.println("Thank you for using LetterFavs.");
     }
+
+    public void printMsg(String msg){
+        System.out.println(msg);
+    }
 }

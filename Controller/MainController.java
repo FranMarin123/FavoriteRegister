@@ -12,7 +12,7 @@ import java.io.File;
 
 public class MainController implements IMainController {
 
-    Library favsLibrary = new Library(new User(),new Favorite[0]);
+    Library favsLibrary = new Library();
     MainView mainView = new MainView();
     CreateView createView = new CreateView();
     FindView findView = new FindView();
@@ -142,9 +142,9 @@ public class MainController implements IMainController {
             int id = deleteView.deleteFavoriteById();
             if (deleteView.sureToDelete()) {
                 if (favsLibrary.deleteFavoriteById(id) != null) {
-                    System.out.println(favsLibrary.deleteFavoriteById(id));
+                    favsLibrary.deleteFavoriteById(id);
                 } else {
-                    System.out.println("No se pudo borrar");
+                    mainView.printMsg("No se pudo borrar");
                 }
             }
         }

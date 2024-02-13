@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Favorite {
+public class Favorite implements Serializable {
     private final int MINID = 1;
     private final int MAXID = 9999;
     private int id;

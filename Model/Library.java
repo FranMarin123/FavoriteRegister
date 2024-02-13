@@ -2,10 +2,11 @@ package Model;
 
 import Interfaces.ILibrary;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Library implements ILibrary {
+public class Library implements ILibrary, Serializable {
     User user;
     Favorite[] favorites;
 
