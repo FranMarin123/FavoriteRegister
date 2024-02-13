@@ -29,7 +29,7 @@ public class MainController implements IMainController {
         boolean correctLogin = false;
         File userFile = new File(System.getProperty("user.dir")+"\\src\\saveFile\\" + username);
         if (userFile.exists()) {
-            favsLibrary = (Library) Serializator.desearize(userFile.toString());
+            favsLibrary = (Library) Serializator.deserializeObject(userFile.toString());
             if (favsLibrary.getUser().comparePassword(loginView.introducePassword())) {
                 loginView.loginCorrectly();
                 correctLogin=true;
@@ -45,7 +45,7 @@ public class MainController implements IMainController {
                 option = mainView.whatToDo();
                 optionSelector(option);
             } while (option != 6);
-            Serializator.serialize(favsLibrary, userFile.toString());
+            Serializator.serializeObject(favsLibrary, userFile.toString());
         }
     }
 

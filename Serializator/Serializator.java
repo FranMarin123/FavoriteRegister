@@ -13,6 +13,7 @@ public class Serializator {
             oos.writeObject(obj);
             result = true;
         } catch (IOException e) {
+            System.out.println("error");
         }
         return result;
     }
@@ -24,8 +25,32 @@ public class Serializator {
         )) {
             result = (T) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
+            System.out.println("error");
         }
         return result;
+    }
+
+    public static void serializeObject(Object obj, String fileName) {
+        try (FileOutputStream fileOut = new FileOutputStream(fileName);
+             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
+            objectOut.writeObject(obj);
+            System.out.println("Objeto serializado y guardado en " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error al serializar el objeto: " + e.getMessage());
+        }
+    }
+
+    // Función para deserializar un objeto desde un archivo
+    public static Object deserializeObject(String fileName) {
+        Object obj = null;
+        try (FileInputStream fileIn = new FileInputStream(fileName);
+             ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
+            obj = objectIn.readObject();
+            System.out.println("Objeto deserializado desde " + fileName);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error al deserializar el objeto: " + e.getMessage());
+        }
+        return obj;
     }
 }
 
