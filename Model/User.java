@@ -13,6 +13,11 @@ public class User {
         setPassword(password);
     }
 
+    public User() {
+        this.username = "";
+        this.password="";
+    }
+
     public String getUsername() {
         return username;
     }
@@ -57,10 +62,10 @@ public class User {
             }
             String hashedInputPassword = stringBuilder.toString();
 
-            comp= hashedInputPassword.equals(password);
+            comp = hashedInputPassword.equals(password);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            comp= false;
+            comp = false;
         }
         return comp;
     }

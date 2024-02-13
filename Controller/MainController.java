@@ -12,7 +12,7 @@ import java.io.File;
 
 public class MainController implements IMainController {
 
-    Library favsLibrary = new Library();
+    Library favsLibrary = new Library(new User(),new Favorite[0]);
     MainView mainView = new MainView();
     CreateView createView = new CreateView();
     FindView findView = new FindView();
@@ -27,11 +27,9 @@ public class MainController implements IMainController {
         String username = loginView.introduceUsername();
         int option = -1;
         boolean correctLogin = false;
-        //Inicio Sesión
-
-        File userFile = new File("saveFile\\" + username);
+        File userFile = new File(System.getProperty("user.dir")+"\\src\\saveFile\\" + username);
         if (userFile.exists()) {
-            favsLibrary = Serializator.desearize(userFile.toString());
+            favsLibrary = (Library) Serializator.desearize(userFile.toString());
             if (favsLibrary.getUser().comparePassword(loginView.introducePassword())) {
                 loginView.loginCorrectly();
                 correctLogin=true;
@@ -48,7 +46,6 @@ public class MainController implements IMainController {
                 optionSelector(option);
             } while (option != 6);
             Serializator.serialize(favsLibrary, userFile.toString());
-            System.out.println(Serializator.serialize(favsLibrary, userFile.toString()));
         }
     }
 
@@ -75,10 +72,12 @@ public class MainController implements IMainController {
                 if (type > 0) {
                     listView.showXFavs(favsLibrary.findXFav(type));
                 }
+                UI.pressEnter();
                 break;
             case 4:
                 type = deleteView.deleteMenu();
                 removeFav(type);
+                UI.pressEnter();
                 break;
             case 5:
                 type = updateView.updateMenu();
@@ -92,6 +91,7 @@ public class MainController implements IMainController {
                         }
                     }
                 }
+                UI.pressEnter();
             case 6:
                 mainView.goodByeProgram();
                 break;

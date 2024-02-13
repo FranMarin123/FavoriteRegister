@@ -25,23 +25,27 @@ public class ListView implements IListView {
 
     @Override
     public void showFavs(Favorite favorite) {
-        switch(favorite.getClass().getSimpleName()) {
-            case "Movie":
-                Movie movieToShow = (Movie) favorite;
-                System.out.println(movieToShow.toString());
-                break;
-            case "Song":
-                Song songToShow = (Song) favorite;
-                System.out.println(songToShow.toString());
-                break;
-            case "Game":
-                Game gameToShow = (Game) favorite;
-                System.out.println(gameToShow.toString());
-                break;
-            default:
-                // Manejo para otros tipos de objetos
-                System.out.println("Tipo de objeto no soportado: " + favorite.getClass().getSimpleName());
-                break;
+        if (favorite!=null) {
+            switch (favorite.getClass().getSimpleName()) {
+                case "Movie":
+                    Movie movieToShow = (Movie) favorite;
+                    System.out.println(movieToShow.toString());
+                    break;
+                case "Song":
+                    Song songToShow = (Song) favorite;
+                    System.out.println(songToShow.toString());
+                    break;
+                case "Game":
+                    Game gameToShow = (Game) favorite;
+                    System.out.println(gameToShow.toString());
+                    break;
+                default:
+                    // Manejo para otros tipos de objetos
+                    System.out.println("Type of object not soported: " + favorite.getClass().getSimpleName());
+                    break;
+            }
+        }else {
+            System.out.println("There is no favourite with this name");
         }
     }
 }
